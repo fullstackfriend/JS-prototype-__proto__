@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>探析Function类型的原型及原型链</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	// JavaScript中万物皆对象，所有对象都有__proto__属性
+	// JavaScript中的原型链及继承依赖的是__proto__属性
+	// __proto__的官方称呼是[[Prototype]],但是个大浏览器都没有实现这一标准
+	// 在Firefox、Chrome、Safari中取而代之的是以__proto__实现
+	
+	
+	function f1(){};
+	var f2 = function(){};
+	var f3 = new Function();
+	
+	console.log('-------- typeof --------');
+	console.log(typeof f1); //function
+	console.log(typeof f2); //function
+	console.log(typeof f3); //function
+	// 说明以上都是函数类型的对象
+	console.log('-------- f --------');
+	console.dir(f1); //name:"f1"
+	console.dir(f2); //name:"" ?????
+	console.dir(f3); //name:"anonymous" ?????
+	// 证实以上函数对象都有prototype属性
+	console.log('-------- f.prototype ----------');
+	console.dir(f1.prototype); //typeof=>object 
+	console.dir(f2.prototype); //typeof=>object
+	console.dir(f3.prototype); //typeof=>object
+	console.log('--------- f.__proto__ f.prototype ----------');
+	console.log(f1.__proto__ === f2.__proto__ === f3.__proto__); //fasle
+	// f1 f2 f3 有各自的__proto__(原型???)
+	console.log(f1.prototype === f2.prototype === f3.prototype); //fasle
+	// f1 f2 f3 有各自的prototype(原型???)
+	console.log('-------- Function === f.__proto__.constructor -----------');
+	console.log(Function === f1.__proto__.constructor) //true
+	console.log(Function === f2.__proto__.constructor) //true
+	console.log(Function === f3.__proto__.constructor) //true
+	console.log('-------- Function.__proto__ Function.prototype -----------');
+	console.dir(Function) 
+	console.log(Function.__proto__ === Function.prototype) //true  ??????why
+	console.log(typeof Function.prototype) // function
+	// Function的原型对象是一个函数对象
+	console.dir(Function.prototype) // function
+	// 但是这个函数对象没有prototype属性，有constructor属性
+	console.log('-------- Function.prototype.constructor -----------');
+	console.log(Function === Function.prototype.constructor) //true
+	// Function的原型对象的构造函数指针又指向自身
+	console.log('-------- Function.prototype.__proto__ -----------');
+	console.dir(Function.prototype.__proto__)
+	console.dir(Function.prototype.__proto__.__proto__) //null ??????why 到头了???
+	console.dir(Function.prototype.__proto__.constructor) //Object
+	console.log(Function.prototype.__proto__.constructor === Object) //true
+	console.log('-------------------');
+</script>
+</body>
+</html>

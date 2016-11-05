@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>前奏</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			function f1(){};
+			var f2 = function(){};
+			var f3 = new Function('str','console.log(str)');
+			
+			var o3 = new f1();
+			var o1 = {};
+			var o2 =new Object();
+			
+			var a1 = new Array();
+			
+			console.log('---------5大引用数据类型----------');
+			console.log(typeof Object); //function
+			console.log(typeof Function); //function
+			console.log(typeof Array); //function
+			console.log(typeof Date); //function
+			console.log(typeof RegExp); //function
+			console.log('---------5大基本数据类型----------');
+			console.log(typeof Boolean); //function
+			console.log(typeof Number); //function
+			console.log(typeof String); //function
+			console.log(typeof Undefined); //undefined
+			console.log(typeof Null); //undefined
+			console.log('-------------------');
+			console.log(typeof undefined); //undefined
+			console.log(typeof null); //object
+			console.log(typeof Math); //object
+			console.log(typeof Global); //object/undefined
+			console.log('-------------------');
+			console.log(typeof o3); //object
+			console.log(typeof f1); //function
+			console.log(typeof a1); //object
+			console.log('-------------------');
+			console.dir(o3);
+			console.dir(a1);
+			console.dir(f1);
+			
+		</script>
+	</body>
+</html>

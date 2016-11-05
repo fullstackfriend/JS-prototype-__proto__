@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>探析Object类型的原型及原型链</title>
+</head>
+<body>
+<script type="text/javascript">
+	var o1 = {
+		name: 'maomao'
+	}
+	var o2 = new Object();
+	
+	console.log('----------- o ------------')
+	console.dir(o1)
+	console.dir(o2)
+	// 普通对象，没有prototype属性
+	// typeof=>object
+	console.log('----------- o.__proto__.constructor --------------')
+	console.log(o1.__proto__.constructor === Object) //true
+	console.log(o2.__proto__.constructor === Object) //true
+	console.log('----------- Object --------------')
+	console.dir(Object) //typeof=>function
+	console.log('----------- Object.__proto__ --------------')
+	console.dir(Object.__proto__) //anonymous()
+	console.log(Object.__proto__ === Object.prototype) //false
+	console.log(Object.__proto__.__proto__ === o1.__proto__) //true
+	console.log(Object.__proto__.__proto__ === Object.prototype) //true
+	console.dir(Object.__proto__.constructor) //Function
+	// 指向Function构造函数啦
+	console.log(Object.__proto__.constructor === Function) //true
+
+	console.dir(Object.prototype)
+	// Object的原型对象上有constructor属性，没有__proto__属性
+	console.dir(Object.prototype.__proto__) //null
+	// 没有__proto__属性，可否理解为指向null(???)，原型链到头了
+	console.log(Object.prototype.constructor === Object ) //true
+	// Object的原型对象上的构造函数又指向了自身
+	
+	
+	
+	
+	console.log('----------- 最终简验 --------------')
+	var t1 = Object.prototype;
+	var t2 = Object.__proto__;
+	
+</script>
+</body>
+</html>

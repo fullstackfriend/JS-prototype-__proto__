@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>最终简验</title>
+</head>
+<body>
+<script type="text/javascript">
+	var o1 = Object.prototype
+	var o2 = Object.__proto__
+	var o3 = new Object()
+	
+	var f1 = Function.prototype
+	var f2 = Function.__proto__
+	var f3 = new Function()
+	
+	console.log('---------------------------')
+	console.log(typeof o1) //object
+	console.log(typeof o2) //function
+	console.log(typeof o3) //object
+	console.log(typeof f1) //function
+	console.log(typeof f2) //function
+	console.log('---------------------------')	
+	console.log(o1 === o2) //false
+	console.log(o1 === o3.__proto__) //true
+	console.log(f1 === f2) //true
+	console.log(f1 === o2) //true
+	console.log('---------------------------')
+	console.log(o1 === f1.__proto__) //true
+	console.log(o1 === o2.__proto__) //true
+	console.log('---------------------------')
+	console.log(o1.__proto__) //null
+	console.log('---------------------------')
+	console.log(o1.constructor === Object) //true
+	// 展开：
+	console.log(Object.prototype.constructor === Object) //true
+	// 同理：
+	console.log(Function.prototype.constructor === Function) //true
+	console.log('---------------------------')
+	console.log(Object.prototype === o3.__proto__) //true
+	console.log(Function.prototype === f3.__proto__) //true
+</script>
+</body>
+</html>
