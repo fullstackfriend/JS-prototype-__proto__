@@ -32,7 +32,10 @@
 	console.dir(f2.prototype); //typeof=>object
 	console.dir(f3.prototype); //typeof=>object
 	console.log('--------- f.__proto__ f.prototype ----------');
-	console.log(f1.__proto__ === f2.__proto__ === f3.__proto__); //fasle
+	console.log(f1.__proto__ === f2.__proto__ === f3.__proto__); //fasle  这里错了，不能用绝对等号这样比较
+	console.log(f1.__proto__ === f2.__proto__); //true
+	console.log(f1.__proto__ === f3.__proto__); //true
+	console.log(f2.__proto__ === f3.__proto__); //true
 	// f1 f2 f3 有各自的__proto__(原型???)
 	console.log(f1.prototype === f2.prototype === f3.prototype); //fasle
 	// f1 f2 f3 有各自的prototype(原型???)
